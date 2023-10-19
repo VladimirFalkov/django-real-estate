@@ -51,7 +51,7 @@ class Property(TimeStampedUUIDModel):
                                    default="127006")
     street_address = models.CharField(verbose_name=_("Street Address"), max_length=150,
                                       default="Red Square 1")
-    property_numder = models.IntegerField(verbose_name=_("Property Numder"),
+    property_number = models.IntegerField(verbose_name=_("Property Numder"),
                                           validators=[MinValueValidator(1)],
                                           default=112)
     price = models.DecimalField(verbose_name=_("Price"), max_digits=8,
@@ -97,7 +97,7 @@ class Property(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.title(self.description)
         self.ref_code = "".join(
             random.choices(string.ascii_uppercase + string.digits, k=10)
             )

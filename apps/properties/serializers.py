@@ -1,4 +1,4 @@
-from django_countries.fields import CountryField
+from django_countries.serializer_fields import CountryField
 from django_countries.serializers import CountryFieldMixin
 from rest_framework import serializers 
 from .models import Property, PropertyViews
@@ -13,7 +13,6 @@ class PropertySerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "user",
-            "profile_photo",
             "title",
             "slug",
             "ref_code",
@@ -40,6 +39,7 @@ class PropertySerializer(serializers.ModelSerializer):
             "published_status",
             "views",
         ]
+
 
     def get_user(self, obj):
         return obj.user.username
